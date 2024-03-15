@@ -1,0 +1,7 @@
+.userFriends {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 36px;
+  margin-bottom: 100px;
+}
