@@ -1,0 +1,9 @@
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quotient {
+  font-style: italic;
+}

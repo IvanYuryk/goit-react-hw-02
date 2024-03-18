@@ -1,0 +1,22 @@
+.feedback {
+  display: flex;
+  gap: 16px;
+}
+
+.feedbackGood {
+  background-color: greenyellow;
+  border-radius: 4px;
+}
+
+.feedbackNeutral {
+  background-color: orange;
+  border-radius: 4px;
+}
+.feedbackBad {
+  background-color: red;
+  border-radius: 4px;
+}
+.resetButton {
+  background-color: beige;
+  border-radius: 4px;
+}
