@@ -1,9 +1,22 @@
 .options {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
-.quotient {
-  font-style: italic;
+.optionsGood {
+  background-color: greenyellow;
+  border-radius: 4px;
+}
+
+.optionsNeutral {
+  background-color: orange;
+  border-radius: 4px;
+}
+.optionsBad {
+  background-color: red;
+  border-radius: 4px;
+}
+.resetButton {
+  background-color: beige;
+  border-radius: 4px;
 }

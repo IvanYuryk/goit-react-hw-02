@@ -1,28 +1,14 @@
 import css from "./Feedback.module.css";
 
-const Feedback = ({ updateFeedback, totalFeedback, resetFeedback }) => {
+const Feedback = ({ feedbackCounts, positivePercentage }) => {
   return (
     <div className={css.feedback}>
-      <button
-        className={css.feedbackGood}
-        onClick={() => updateFeedback("good")}
-      >
-        Good
-      </button>
-      <button
-        className={css.feedbackNeutral}
-        onClick={() => updateFeedback("neutral")}
-      >
-        Neutral
-      </button>
-      <button className={css.feedbackBad} onClick={() => updateFeedback("bad")}>
-        Bad
-      </button>
-      {totalFeedback > 0 && (
-        <button className={css.resetButton} onClick={resetFeedback}>
-          Reset
-        </button>
-      )}
+      <p>Good: {feedbackCounts.good}</p>
+      <p>Neutral: {feedbackCounts.neutral}</p>
+      <p>Bad: {feedbackCounts.bad}</p>
+      <p className={css.quotient}>
+        Positive Feedback Percentage: {positivePercentage}%
+      </p>
     </div>
   );
 };

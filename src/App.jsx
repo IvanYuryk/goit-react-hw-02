@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Description from "./components/Description/Description";
@@ -15,6 +14,8 @@ const App = () => {
 
   const [feedbackCounts, setFeedbackCounts] = useState(initialState);
 
+  const [positivePercentage, setPositivePercentage] = useState(0);
+
   useEffect(() => {
     const savedCounts = JSON.parse(localStorage.getItem("feedbackCounts"));
     if (savedCounts) {
@@ -24,35 +25,38 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem("feedbackCounts", JSON.stringify(feedbackCounts));
+    const totalOptions =
+      feedbackCounts.good + feedbackCounts.neutral + feedbackCounts.bad;
+    const percentage = Math.round(
+      ((feedbackCounts.good + feedbackCounts.neutral) / totalOptions) * 100
+    );
+    setPositivePercentage(isNaN(percentage) ? 0 : percentage);
   }, [feedbackCounts]);
 
-  const updateFeedback = (feedbackType) => {
+  const updateOptions = (feedbackType) => {
     setFeedbackCounts((prevCounts) => ({
       ...prevCounts,
       [feedbackType]: prevCounts[feedbackType] + 1,
     }));
   };
 
-  const resetFeedback = () => {
+  const resetOptions = () => {
     setFeedbackCounts(initialState);
   };
 
-  const totalFeedback =
+  const totalOptions =
     feedbackCounts.good + feedbackCounts.neutral + feedbackCounts.bad;
-  const positivePercentage = Math.round(
-    ((feedbackCounts.good + feedbackCounts.neutral) / totalFeedback) * 100
-  );
 
   return (
     <div className="container">
       <Description />
-      <Feedback
-        updateFeedback={updateFeedback}
-        totalFeedback={totalFeedback}
-        resetFeedback={resetFeedback}
+      <Options
+        updateOptions={updateOptions}
+        totalOptions={totalOptions}
+        resetOptions={resetOptions}
       />
-      {totalFeedback > 0 ? (
-        <Options
+      {totalOptions > 0 ? (
+        <Feedback
           feedbackCounts={feedbackCounts}
           positivePercentage={positivePercentage}
         />

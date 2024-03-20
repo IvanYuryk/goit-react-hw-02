@@ -1,15 +1,25 @@
 import css from "./Options.module.css";
 
-const Options = ({ feedbackCounts, positivePercentage }) => {
+const Options = ({ updateOptions, totalOptions, resetOptions }) => {
   return (
     <div className={css.options}>
-      <p>Good: {feedbackCounts.good}</p>
-      <p>Neutral: {feedbackCounts.neutral}</p>
-      <p>Bad: {feedbackCounts.bad}</p>
-      <p className={css.quotient}>
-        Positive Feedback Percentage:{" "}
-        {isNaN(positivePercentage) ? 0 : positivePercentage}%
-      </p>
+      <button className={css.optionsGood} onClick={() => updateOptions("good")}>
+        Good
+      </button>
+      <button
+        className={css.optionsNeutral}
+        onClick={() => updateOptions("neutral")}
+      >
+        Neutral
+      </button>
+      <button className={css.optionsBad} onClick={() => updateOptions("bad")}>
+        Bad
+      </button>
+      {totalOptions > 0 && (
+        <button className={css.resetButton} onClick={resetOptions}>
+          Reset
+        </button>
+      )}
     </div>
   );
 };
